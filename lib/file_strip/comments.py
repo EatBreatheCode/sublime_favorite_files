@@ -54,100 +54,100 @@ JSON_PATTERN = re.compile(r'(?x)%(comments)s|%(code)s' % {"comments": CPP_COMMEN
 
 
 def _strip_regex(pattern, text, preserve_lines):
-    """Generic function that strips out comments pased on the given pattern."""
+	"""Generic function that strips out comments pased on the given pattern."""
 
-    def remove_comments(group, preserve_lines=False):
-        """Remove comments."""
+	def remove_comments(group, preserve_lines=False):
+		"""Remove comments."""
 
-        return ''.join([x[0] for x in LINE_PRESERVE.findall(group)]) if preserve_lines else ''
+		return ''.join([x[0] for x in LINE_PRESERVE.findall(group)]) if preserve_lines else ''
 
-    def evaluate(m, preserve_lines):
-        """Search for comments."""
+	def evaluate(m, preserve_lines):
+		"""Search for comments."""
 
-        g = m.groupdict()
-        return g["code"] if g["code"] is not None else remove_comments(g["comments"], preserve_lines)
+		g = m.groupdict()
+		return g["code"] if g["code"] is not None else remove_comments(g["comments"], preserve_lines)
 
-    return ''.join(map(lambda m: evaluate(m, preserve_lines), pattern.finditer(text)))
+	return ''.join(map(lambda m: evaluate(m, preserve_lines), pattern.finditer(text)))
 
 
 @staticmethod
 def _cpp(text, preserve_lines=False):
-    """C/C++ style comment stripper."""
+	"""C/C++ style comment stripper."""
 
-    return _strip_regex(
-        CPP_PATTERN,
-        text,
-        preserve_lines
-    )
+	return _strip_regex(
+		CPP_PATTERN,
+		text,
+		preserve_lines
+	)
 
 
 @staticmethod
 def _json(text, preserve_lines=False):
-    """C/C++ style comment stripper."""
+	"""C/C++ style comment stripper."""
 
-    return _strip_regex(
-        JSON_PATTERN,
-        text,
-        preserve_lines
-    )
+	return _strip_regex(
+		JSON_PATTERN,
+		text,
+		preserve_lines
+	)
 
 
 @staticmethod
 def _python(text, preserve_lines=False):
-    """Python style comment stripper."""
+	"""Python style comment stripper."""
 
-    return _strip_regex(
-        PY_PATTERN,
-        text,
-        preserve_lines
-    )
+	return _strip_regex(
+		PY_PATTERN,
+		text,
+		preserve_lines
+	)
 
 
 class CommentException(Exception):
-    """Comment exception."""
+	"""Comment exception."""
 
-    def __init__(self, value):
-        """Setup exception."""
+	def __init__(self, value):
+		"""Setup exception."""
 
-        self.value = value
+		self.value = value
 
-    def __str__(self):
-        """Return exception value repr on string convert."""
+	def __str__(self):
+		"""Return exception value repr on string convert."""
 
-        return repr(self.value)
+		return repr(self.value)
 
 
 class Comments(object):
-    """Comment strip class."""
+	"""Comment strip class."""
 
-    styles = []
+	styles = []
 
-    def __init__(self, style=None, preserve_lines=False):
-        """Initialize."""
+	def __init__(self, style=None, preserve_lines=False):
+		"""Initialize."""
 
-        self.preserve_lines = preserve_lines
-        self.call = self.__get_style(style)
+		self.preserve_lines = preserve_lines
+		self.call = self.__get_style(style)
 
-    @classmethod
-    def add_style(cls, style, fn):
-        """Add comment style."""
+	@classmethod
+	def add_style(cls, style, fn):
+		"""Add comment style."""
 
-        if style not in cls.__dict__:
-            setattr(cls, style, fn)
-            cls.styles.append(style)
+		if style not in cls.__dict__:
+			setattr(cls, style, fn)
+			cls.styles.append(style)
 
-    def __get_style(self, style):
-        """Get the comment style."""
+	def __get_style(self, style):
+		"""Get the comment style."""
 
-        if style in self.styles:
-            return getattr(self, style)
-        else:
-            raise CommentException(style)
+		if style in self.styles:
+			return getattr(self, style)
+		else:
+			raise CommentException(style)
 
-    def strip(self, text):
-        """Strip comments."""
+	def strip(self, text):
+		"""Strip comments."""
 
-        return self.call(text, self.preserve_lines)
+		return self.call(text, self.preserve_lines)
 
 
 Comments.add_style("c", _cpp)

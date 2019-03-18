@@ -1,88 +1,153 @@
 [
-    {
-        "id": "file",
-        "children":
-        [
-            { "caption": "-" },
-            {
-                "caption": "Favorite Files",
-                "children":
-                [
-                    {
-                        "caption": "Add to Favorite Files",
-                        "command": "favorite_files_add"
-                    },
-                    {
-                        "caption": "Open Favorite File(s)",
-                        "command": "favorite_files_open"
-                    },
-                    {
-                        "caption": "Remove Favorite File(s)",
-                        "command": "favorite_files_remove"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "id": "preferences",
-        "children":
-        [
-            {
-                "caption": "Package Settings",
-                "mnemonic": "P",
-                "id": "package-settings",
-                "children":
-                [
-                    {
-                        "caption": "FavoriteFiles",
-                        "children":
-                        [
-                            // FavoriteFiles settings
-                            {
-                                "command": "edit_settings", "args": {
-                                    "base_file": "${packages}/FavoriteFiles/favorite_files.sublime-settings",
-                                    "default": "{\n$0\n}\n"
-                                },
-                                "caption": "Settings"
-                            },
-                            { "caption": "-" },
-                            // FavoriteFiles global file list
-                            {
-                                "command": "open_file", "args":
-                                {
-                                    "file": "${packages}/User/favorite_files_list.json"
-                                },
-                                "caption": "Global Favorite List"
-                            },
-                            { "caption": "-" },
-                            {
-                                "caption": "Changelog",
-                                "command": "favorite_files_changes"
-                            },
-                            {
-                                "caption": "Documentation",
-                                "command": "favorite_files_open_site",
-                                "args": {
-                                    "url": "http://facelessuser.github.io/FavoriteFiles/"
-                                }
-                            },
-                            { "caption": "-" },
-                            {
-                                "caption": "Support Info",
-                                "command": "favorite_files_support_info"
-                            },
-                            {
-                                "caption": "Issues",
-                                "command": "favorite_files_open_site",
-                                "args": {
-                                    "url": "https://github.com/facelessuser/FavoriteFiles/issues"
-                                }
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    }
+	{
+		"caption": "File",
+		"mnemonic": "F",
+		"id": "file",
+		"children":
+		[
+			{ "caption": "-" },
+			{
+				"caption": "Favorite Files",
+				"children":
+				[
+					{
+						"caption": "Add to Favorite Files",
+						"command": "favorite_files_add"
+					},
+					{
+						"caption": "Open Favorite File(s)",
+						"command": "favorite_files_open"
+					},
+					{
+						"caption": "Remove Favorite File(s)",
+						"command": "favorite_files_remove"
+					}
+				]
+			}
+		]
+	},
+	{
+		"caption": "Preferences",
+		"mnemonic": "n",
+		"id": "preferences",
+		"children":
+		[
+			{
+				"caption": "Package Settings",
+				"mnemonic": "P",
+				"id": "package-settings",
+				"children":
+				[
+					{
+						"caption": "FavoriteFiles",
+						"children":
+						[
+							{
+								"caption": "Settings",
+								"command": "edit_settings",
+								"args":
+								{
+									"base_file": "${packages}/FavoriteFiles/favorite_files.sublime-settings",
+									"default": "{\n\t$0\n}\n"
+								}
+							},
+							{ "caption": "-" },
+							{
+								"caption": "Global Favorite List",
+								"command": "open_file",
+								"args": { "file": "${packages}/User/favorite_files_list.json" }
+							},
+							{ "caption": "-" },
+							{
+								"caption": "Key Bindings",
+								"command": "edit_settings",
+								"args":
+								{
+									"base_file": "${packages}/FavoriteFiles/Default.sublime-keymap",
+									"user_file": "${packages}/User/Default (${platform}).sublime-keymap",
+									"default": "[\n\t$0\n]\n"
+								}
+							},
+							{ "caption": "-" },
+							{
+								"caption": "Menus",
+								"children":
+								[
+									{
+										"caption": "Context Menu",
+										"command": "z_edit_settings",
+										"args":
+										{
+											"is_parent_setting": "1",
+											"base_file": "${packages}/FavoriteFiles/Context.sublime-menu",
+											"default": "[\n\t$0\n]\n"
+										}
+									},
+									{
+										"caption": "Side Bar Menu",
+										"command": "z_edit_settings",
+										"args":
+										{
+											"is_parent_setting": "1",
+											"base_file": "${packages}/FavoriteFiles/Side Bar.sublime-menu",
+											"default": "[\n\t$0\n]\n"
+										}
+									},
+									{
+										"caption": "Tab Menu",
+										"command": "z_edit_settings",
+										"args":
+										{
+											"is_parent_setting": "1",
+											"base_file": "${packages}/FavoriteFiles/Tab Context.sublime-menu",
+											"default": "[\n\t$0\n]\n"
+										}
+									},
+									{
+										"caption": "Main Menu",
+										"command": "z_edit_settings",
+										"args":
+										{
+											"is_parent_setting": "1",
+											"base_file": "${packages}/FavoriteFiles/Main.sublime-menu",
+											"default": "[\n\t$0\n]\n"
+										}
+									}
+								]
+							},
+							{
+								"caption": "Commands",
+								"command": "z_edit_settings",
+								"args":
+								{
+									"is_parent_setting": "1",
+									"base_file": "${packages}/FavoriteFiles/Default.sublime-commands",
+									"default": "[\n\t$0\n]\n"
+								}
+							},
+							{ "caption": "-" },
+							{
+								"caption": "Changelog",
+								"command": "favorite_files_changes"
+							},
+							{
+								"caption": "Documentation",
+								"command": "favorite_files_open_site",
+								"args": { "url": "https://eatbreathecode.github.io/sublime_favorite_files/" }
+							},
+							{
+								"caption": "Support Info",
+								"command": "favorite_files_support_info"
+							},
+							{
+								"caption": "README",
+								"command": "open_file",
+								"args": { "file": "${packages}/FavoriteFiles/README.md" }
+							}
+						]
+					}
+				]
+			}
+		]
+	}
 ]
