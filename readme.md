@@ -13,7 +13,7 @@ This is a simple plugin that was created to save favorite files that are not par
 
 # Documentation
 
-https://github.com/EatBreatheCode/sublime_favorite_files
+https://eatbreathecode.github.io/sublime_favorite_files/
 
 [travis-image]: https://img.shields.io/travis/facelessuser/FavoriteFiles/master.svg
 [travis-link]: https://travis-ci.org/facelessuser/FavoriteFiles
