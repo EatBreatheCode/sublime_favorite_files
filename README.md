@@ -15,6 +15,10 @@ This is a simple plugin that was created to save favorite files that are not par
 
 https://eatbreathecode.github.io/sublime_favorite_files/
 
+# License
+	
+Favorite Files is released under the [MIT license](LICENSE).
+
 [travis-image]: https://img.shields.io/travis/facelessuser/FavoriteFiles/master.svg
 [travis-link]: https://travis-ci.org/facelessuser/FavoriteFiles
 [pc-image]: https://img.shields.io/packagecontrol/dt/FavoriteFiles.svg
