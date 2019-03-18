@@ -17,7 +17,7 @@ https://eatbreathecode.github.io/sublime_favorite_files/
 
 # License
 	
-Favorite Files is released under the [MIT license](LICENSE).
+FavoriteFiles is released under the [MIT license](LICENSE).
 
 [travis-image]: https://img.shields.io/travis/facelessuser/FavoriteFiles/master.svg
 [travis-link]: https://travis-ci.org/facelessuser/FavoriteFiles
