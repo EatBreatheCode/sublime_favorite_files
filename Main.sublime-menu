@@ -47,7 +47,7 @@
 								"command": "edit_settings",
 								"args":
 								{
-									"base_file": "${packages}/FavoriteFiles/favorite_files.sublime-settings",
+									"base_file": "${packages}/FavoriteFiles/FavoriteFiles.sublime-settings",
 									"default": "{\n\t$0\n}\n"
 								}
 							},

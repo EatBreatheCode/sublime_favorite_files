@@ -21,7 +21,7 @@ except Exception:
 def notify(msg):
 	"""Notify message."""
 
-	settings = sublime.load_settings("favorite_files.sublime-settings")
+	settings = sublime.load_settings("FavoriteFiles.sublime-settings")
 	if settings.get("use_sub_notify", False) and Notify.is_ready():
 		sublime.run_command("sub_notify", {"title": "FavoriteFiles", "msg": msg})
 	else:
@@ -31,7 +31,7 @@ def notify(msg):
 def error(msg):
 	"""Error message."""
 
-	settings = sublime.load_settings("favorite_files.sublime-settings")
+	settings = sublime.load_settings("FavoriteFiles.sublime-settings")
 	if settings.get("use_sub_notify", False) and Notify.is_ready():
 		sublime.run_command("sub_notify", {"title": "FavoriteFiles", "msg": msg, "level": "error"})
 	else:

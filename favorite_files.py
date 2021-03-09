@@ -485,7 +485,7 @@ def check_st_version():
 
 def settings():
 	"""Return settings file."""
-	return sublime.load_settings("favorite_files.sublime-settings")
+	return sublime.load_settings("FavoriteFiles.sublime-settings")
 
 
 def plugin_loaded():
